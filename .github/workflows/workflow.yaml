@@ -15,8 +15,8 @@ jobs:
       - name: Plan
         id: plan
         run: |
-          # exit 1
-          echo "exitcode=$(exit 1 && echo 123)" >> $GITHUB_OUTPUT
+          $(exit 1)
+          echo "exitcode=$?" >> $GITHUB_OUTPUT
 
   test:
     name: Test
