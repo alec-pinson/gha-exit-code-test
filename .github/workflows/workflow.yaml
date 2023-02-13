@@ -15,9 +15,11 @@ jobs:
       - name: Plan
         id: plan
         run: |
-          $(exit 1)
-          echo "exitcode=test" >> $GITHUB_OUTPUT
-        continue-on-error: true
+          if $(exit 1); then
+            echo "exitcode=0" >> $GITHUB_OUTPUT
+          else
+            echo "exitcode=1" >> $GITHUB_OUTPUT
+          fi
 
   test:
     name: Test
