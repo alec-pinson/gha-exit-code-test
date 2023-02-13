@@ -17,6 +17,7 @@ jobs:
         run: |
           $(exit 1)
           echo "exitcode=$?" >> $GITHUB_OUTPUT
+        continue-on-error: true
 
   test:
     name: Test
