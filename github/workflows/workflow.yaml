@@ -1,0 +1,27 @@
+name: workflow
+
+on:
+  pull_request:
+  release:
+  push:
+
+jobs:
+  plan:
+    name: Plan
+    runs-on: ubuntu-latest
+    outputs:
+      exitcode: ${{ steps.plan.outputs.exitcode }}
+    steps:
+      - name: Plan
+        id: plan
+        run: |
+          exit 1
+          echo "exitcode=$?" >> $GITHUB_OUTPUT
+        continue-on-error: true
+
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    needs: [ plan ]
+    steps:
+      - run: echo ${{ needs.plan.outputs.exitcode }}
