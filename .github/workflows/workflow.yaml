@@ -16,8 +16,7 @@ jobs:
         id: plan
         run: |
           # exit 1
-          echo "exitcode=123" >> $GITHUB_OUTPUT
-        continue-on-error: true
+          echo "exitcode=$(exit 1 && echo 123)" >> $GITHUB_OUTPUT
 
   test:
     name: Test
