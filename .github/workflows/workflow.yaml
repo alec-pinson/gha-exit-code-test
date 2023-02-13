@@ -15,9 +15,7 @@ jobs:
       - name: Plan
         id: plan
         run: |
-          exit 1
-          echo $?
-          echo "alec=$?" >> $GITHUB_OUTPUT
+          echo "alec=$(exit 1 && echo $?)" >> $GITHUB_OUTPUT
         continue-on-error: true
 
   test:
