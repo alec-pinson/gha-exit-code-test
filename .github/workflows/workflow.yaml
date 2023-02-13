@@ -15,7 +15,7 @@ jobs:
       - name: Plan
         id: plan
         run: |
-          if $(exit 0); then
+          if $(exit 1); then
             echo "exitcode=0" >> $GITHUB_OUTPUT
           else
             echo "exitcode=1" >> $GITHUB_OUTPUT
