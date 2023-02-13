@@ -10,13 +10,12 @@ jobs:
     name: Plan
     runs-on: ubuntu-latest
     outputs:
-      exitcode: ${{ steps.plan.outputs.exitcode }}
+      alec: ${{ steps.plan.outputs.alec }}
     steps:
       - name: Plan
         id: plan
         run: |
-          exit 1
-          echo "exitcode=$?" >> $GITHUB_OUTPUT
+          echo "alec=123" >> $GITHUB_OUTPUT
         continue-on-error: true
 
   test:
@@ -24,4 +23,4 @@ jobs:
     runs-on: ubuntu-latest
     needs: [ plan ]
     steps:
-      - run: echo ${{ needs.plan.outputs.exitcode }}
+      - run: echo ${{ needs.plan.outputs.alec }}
